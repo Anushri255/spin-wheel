@@ -133,12 +133,15 @@
 
         function updateNames() {
             namesDiv.innerHTML = '';
+            const ul = document.createElement('ul');
             names.forEach(name => {
-                const nameSpan = document.createElement('span');
-                nameSpan.textContent = name;
-                namesDiv.appendChild(nameSpan);
+                const li = document.createElement('li');
+                li.textContent = name;
+                ul.appendChild(li);
             });
+            namesDiv.appendChild(ul);
         }
+
 
         function spin() {
             const sliceDeg = 360 / names.length;
