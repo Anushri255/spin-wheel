@@ -69,8 +69,6 @@
             margin-top: 20px;
         }
     </style>
-
-    
 </head>
 <body>
     <div id="wheel">
@@ -81,10 +79,12 @@
         <button onclick="addName()">Add Name</button>
         <button onclick="removeName()">Remove Name</button>
         <button onclick="spin()">Spin</button>
+        <button onclick="removeAllNames()">Remove All Names</button>
     </div>
     <div id="names"></div>
-<script>
-            const wheel = document.getElementById('wheel');
+
+    <script>
+        const wheel = document.getElementById('wheel');
         const namesDiv = document.getElementById('names');
         let names = [];
         const colors = ['#f1c40f', '#e67e22', '#e74c3c', '#9b59b6', '#3498db', '#1abc9c', '#2ecc71', '#34495e'];
@@ -110,6 +110,12 @@
                 updateWheel();
                 updateNames();
             }
+        }
+
+        function removeAllNames() {
+            names = [];
+            updateWheel();
+            updateNames();
         }
 
         function updateWheel() {
@@ -145,6 +151,6 @@
                 alert(`Selected: ${names[randomSlice]}`);
             }, 4000);
         }
-</script>
+    </script>
 </body>
 </html>
