@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Spinning Wheel</title>
     <style>
@@ -70,9 +69,31 @@
         #names {
             margin-top: 20px;
         }
+
+        #names ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #names li {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        #names button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        #selectedName {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
     </style>
 </head>
-
 <body>
     <div id="selectedName">
         <h2>Selected Name: <span id="selectedNameText">Spin the wheel!</span></h2>
@@ -83,9 +104,8 @@
     <div class="controls">
         <input type="text" id="nameInput" placeholder="Enter a name">
         <button onclick="addName()">Add Name</button>
-        <button onclick="removeName()">Remove Name</button>
-        <button onclick="spin()">Spin</button>
         <button onclick="removeAllNames()">Remove All Names</button>
+        <button onclick="spin()">Spin</button>
     </div>
 
     <h3>Names Added:</h3>
@@ -142,14 +162,27 @@
         function updateNames() {
             namesDiv.innerHTML = '';
             const ul = document.createElement('ul');
-            names.forEach(name => {
+            names.forEach((name, index) => {
                 const li = document.createElement('li');
                 li.textContent = name;
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.onclick = () => {
+                    removeNameAt(index);
+                };
+
+                li.appendChild(removeButton);
                 ul.appendChild(li);
             });
             namesDiv.appendChild(ul);
         }
 
+        function removeNameAt(index) {
+            names.splice(index, 1);
+            updateWheel();
+            updateNames();
+        }
 
         function spin() {
             const sliceDeg = 360 / names.length;
@@ -165,5 +198,4 @@
         }
     </script>
 </body>
-
 </html>
