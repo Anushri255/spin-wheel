@@ -1,1 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Spinning Wheel</title>
+</head>
+<body>
+    <div id="wheel">
+        <div id="arrow"></div>
+    </div>
+    <div class="controls">
+        <input type="text" id="nameInput" placeholder="Enter a name">
+        <button onclick="addName()">Add Name</button>
+        <button onclick="removeName()">Remove Name</button>
+        <button onclick="spin()">Spin</button>
+    </div>
+    <div id="names"></div>
 
+</body>
+</html>
