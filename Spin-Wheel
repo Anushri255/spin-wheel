@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Spinning Wheel</title>
     <style>
@@ -43,8 +44,8 @@
         }
 
         #arrow {
-            width: 0; 
-            height: 0; 
+            width: 0;
+            height: 0;
             border-left: 20px solid transparent;
             border-right: 20px solid transparent;
             border-bottom: 30px solid #333;
@@ -60,7 +61,8 @@
             gap: 10px;
         }
 
-        input, button {
+        input,
+        button {
             padding: 10px;
             font-size: 16px;
         }
@@ -70,7 +72,11 @@
         }
     </style>
 </head>
+
 <body>
+    <div id="selectedName">
+        <h2>Selected Name: <span id="selectedNameText">Spin the wheel!</span></h2>
+    </div>
     <div id="wheel">
         <div id="arrow"></div>
     </div>
@@ -81,6 +87,8 @@
         <button onclick="spin()">Spin</button>
         <button onclick="removeAllNames()">Remove All Names</button>
     </div>
+
+    <h3>Names Added:</h3>
     <div id="names"></div>
 
     <script>
@@ -151,9 +159,11 @@
             wheel.style.transform = `rotate(${rotateDeg}deg)`;
 
             setTimeout(() => {
-                alert(`Selected: ${names[randomSlice]}`);
+                const name = document.getElementById('selectedNameText');
+                name.textContent = names[randomSlice];
             }, 4000);
         }
     </script>
 </body>
+
 </html>
