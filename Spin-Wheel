@@ -70,69 +70,7 @@
         }
     </style>
 
-<script>
-    const wheel = document.getElementById('wheel');
-    const namesDiv = document.getElementById('names');
-    let names = [];
-    const colors = ['#f1c40f', '#e67e22', '#e74c3c', '#9b59b6', '#3498db', '#1abc9c', '#2ecc71', '#34495e'];
-
-    function addName() {
-        const nameInput = document.getElementById('nameInput');
-        const name = nameInput.value.trim();
-        if (name && !names.includes(name)) {
-            names.push(name);
-            nameInput.value = '';
-            updateWheel();
-            updateNames();
-        }
-    }
-
-    function removeName() {
-        const nameInput = document.getElementById('nameInput');
-        const name = nameInput.value.trim();
-        const index = names.indexOf(name);
-        if (index > -1) {
-            names.splice(index, 1);
-            nameInput.value = '';
-            updateWheel();
-            updateNames();
-        }
-    }
-
-    function updateWheel() {
-        wheel.innerHTML = '<div id="arrow"></div>';
-        const sliceDeg = 360 / names.length;
-        names.forEach((name, i) => {
-            const slice = document.createElement('div');
-            slice.className = 'slice';
-            slice.style.backgroundColor = colors[i % colors.length];
-            slice.style.transform = `rotate(${i * sliceDeg}deg)`;
-            slice.innerHTML = `<span style="transform: rotate(${sliceDeg / 2}deg)">${name}</span>`;
-            wheel.appendChild(slice);
-        });
-    }
-
-    function updateNames() {
-        namesDiv.innerHTML = '';
-        names.forEach(name => {
-            const nameSpan = document.createElement('span');
-            nameSpan.textContent = name;
-            namesDiv.appendChild(nameSpan);
-        });
-    }
-
-    function spin() {
-        const sliceDeg = 360 / names.length;
-        const randomSlice = Math.floor(Math.random() * names.length);
-        const rotateDeg = randomSlice * sliceDeg + 3600 + sliceDeg / 2;
-        wheel.style.transition = 'transform 4s ease-out';
-        wheel.style.transform = `rotate(${rotateDeg}deg)`;
-
-        setTimeout(() => {
-            alert(`Selected: ${names[randomSlice]}`);
-        }, 4000);
-    }
-</script>
+    
 </head>
 <body>
     <div id="wheel">
@@ -145,6 +83,68 @@
         <button onclick="spin()">Spin</button>
     </div>
     <div id="names"></div>
+<script>
+            const wheel = document.getElementById('wheel');
+        const namesDiv = document.getElementById('names');
+        let names = [];
+        const colors = ['#f1c40f', '#e67e22', '#e74c3c', '#9b59b6', '#3498db', '#1abc9c', '#2ecc71', '#34495e'];
 
+        function addName() {
+            const nameInput = document.getElementById('nameInput');
+            const name = nameInput.value.trim();
+            if (name && !names.includes(name)) {
+                names.push(name);
+                nameInput.value = '';
+                updateWheel();
+                updateNames();
+            }
+        }
+
+        function removeName() {
+            const nameInput = document.getElementById('nameInput');
+            const name = nameInput.value.trim();
+            const index = names.indexOf(name);
+            if (index > -1) {
+                names.splice(index, 1);
+                nameInput.value = '';
+                updateWheel();
+                updateNames();
+            }
+        }
+
+        function updateWheel() {
+            wheel.innerHTML = '<div id="arrow"></div>';
+            const sliceDeg = 360 / names.length;
+            names.forEach((name, i) => {
+                const slice = document.createElement('div');
+                slice.className = 'slice';
+                slice.style.backgroundColor = colors[i % colors.length];
+                slice.style.transform = `rotate(${i * sliceDeg}deg)`;
+                slice.innerHTML = `<span style="transform: rotate(${sliceDeg / 2}deg)">${name}</span>`;
+                wheel.appendChild(slice);
+            });
+        }
+
+        function updateNames() {
+            namesDiv.innerHTML = '';
+            names.forEach(name => {
+                const nameSpan = document.createElement('span');
+                nameSpan.textContent = name;
+                namesDiv.appendChild(nameSpan);
+            });
+        }
+
+        function spin() {
+            const sliceDeg = 360 / names.length;
+            const randomSlice = Math.floor(Math.random() * names.length);
+            const rotateDeg = randomSlice * sliceDeg + 3600 + sliceDeg / 2;
+            wheel.style.transition = 'transform 4s ease-out';
+            wheel.style.transform = `rotate(${rotateDeg}deg)`;
+
+            setTimeout(() => {
+                alert(`Selected: ${names[randomSlice]}`);
+            }, 4000);
+        }
+</script>
 </body>
 </html>
