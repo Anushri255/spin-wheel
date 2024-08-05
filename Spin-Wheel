@@ -92,6 +92,19 @@
             font-size: 18px;
             font-weight: bold;
         }
+
+        .removebtn{
+            background-color: rgb(252, 127, 127);
+        }
+
+        .spinbtn{
+            background-color: rgb(149, 215, 149);
+        }
+
+        .addName{
+            background-color: rgb(127, 255, 212);
+        }
+
     </style>
 </head>
 <body>
@@ -103,9 +116,9 @@
     </div>
     <div class="controls">
         <input type="text" id="nameInput" placeholder="Enter a name">
-        <button onclick="addName()">Add Name</button>
-        <button onclick="removeAllNames()">Remove All Names</button>
-        <button onclick="spin()">Spin</button>
+        <button  class ="addName" onclick="addName()">Add Name</button>
+        <button class="removebtn" onclick="removeAllNames()">Remove All Names</button>
+        <button class="spinbtn" onclick="spin()">Spin</button>
     </div>
 
     <h3>Names Added:</h3>
